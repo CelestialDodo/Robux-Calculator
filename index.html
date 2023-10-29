@@ -2,6 +2,12 @@
 <html>
 <head>
     <title>Robux Calculator</title>
+    <style>
+        body {
+            background-color: black; /* Set the background color to black */
+            color: white; /* Set the text color to white for better visibility */
+        }
+    </style>
 </head>
 <body>
     <script>
@@ -10,7 +16,7 @@
         const robux2 = 15 / 1201;
 
         document.write("Robux per cent online: " + robux + "<br>----------------------------------------------<br>");
-        document.write("Robux per cent on card: " + robux + "<br>----------------------------------------------<br>");
+        document.write("Robux per cent on card: " + robux2 + "<br>----------------------------------------------<br>");
         document.write("<label for='robuxInput'>Input Amount of Robux</label><br>");
         document.write("<input type='text' id='robuxInput' oninput='calculateCost()'><br><br>");
         document.write("<div id='results'></div>");
