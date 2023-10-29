@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Robux Calculator</title>
+</head>
+<body>
+    <script>
+        // JavaScript code to calculate Robux costs
+        const robux = 6.99 / 400;
+        const robux2 = 15 / 1201;
+
+        document.write("Robux per cent: " + robux + "<br>----------------------------------------------<br>");
+        document.write("<label for='robuxInput'>Input Amount of Robux</label><br>");
+        document.write("<input type='text' id='robuxInput' oninput='calculateCost()'><br><br>");
+        document.write("<div id='results'></div>");
+
+        function calculateCost() {
+            const robuxI = document.getElementById('robuxInput').value;
+            const resultsDiv = document.getElementById('results');
+
+            if (robuxI !== "") {
+                const robuxShop = parseInt(robuxI) * robux;
+                const robuxCard = parseInt(robuxI) * robux2;
+
+                resultsDiv.innerHTML = "Online Cost: " + robuxShop + "<br>Card Cost: " + robuxCard + "<br>";
+            } else {
+                resultsDiv.innerHTML = ""; // Clear the results if the input is empty
+            }
+        }
+    </script>
+</body>
+</html>
