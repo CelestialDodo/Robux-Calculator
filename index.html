@@ -12,22 +12,48 @@
 <body>
     <script>
         // JavaScript code to calculate Robux costs
-        const robux = 6.99 / 400;
+        const robux1 = 6.99 / 400;
         const robux2 = 15 / 1201;
+        const robux3 = 400 / 6.99;
+        const robux4 = 1201 / 15;
 
-        document.write("Robux per cent online: " + robux + "<br>");
+        let currentRobux = 'robux1'; // Initialize with robux1
+
+        document.write("<label id='Mode'>Mode: Robux To CAD</label><br><br>");
+        document.write("Robux per cent online: " + robux1 + "<br>");
         document.write("Robux per cent on card: " + robux2 + "<br>----------------------------------------------<br>");
-        document.write("<label for='robuxInput'>Input Amount of Robux</label><br>");
+        document.write("<label for='robuxInput' id='input'>Input Amount of Robux</label><br>");
         document.write("<input type='text' id='robuxInput' oninput='calculateCost()'><br><br>");
+        document.write("<button id='toggleButton' onclick='toggleRobux()'>Toggle Mode</button><br><br>");
         document.write("<div id='results'></div>");
+
+        function toggleRobux() {
+            if (currentRobux === 'robux1') {
+                currentRobux = 'robux3';
+                document.getElementById('Mode').innerHTML = 'CAD To Robux';
+                document.getElementById('input').innerHTML = 'Input Amout of Money';
+            } else {
+                currentRobux = 'robux1';
+                document.getElementById('Mode').innerHTML = 'Robux To CAD';
+                document.getElementById('input').innerHTML = 'Input Amount of Robux';
+            }
+            calculateCost();
+        }
 
         function calculateCost() {
             const robuxI = document.getElementById('robuxInput').value;
             const resultsDiv = document.getElementById('results');
 
             if (robuxI !== "") {
-                const robuxShop = parseInt(robuxI) * robux;
-                const robuxCard = parseInt(robuxI) * robux2;
+                let robuxShop, robuxCard;
+
+                if (currentRobux === 'robux1') {
+                    robuxShop = parseInt(robuxI) * robux1;
+                    robuxCard = parseInt(robuxI) * robux2;
+                } else {
+                    robuxShop = parseInt(robuxI) * robux3;
+                    robuxCard = parseInt(robuxI) * robux4;
+                }
 
                 resultsDiv.innerHTML = "Online Cost: " + robuxShop + "<br>Card Cost: " + robuxCard + "<br>";
             } else {
